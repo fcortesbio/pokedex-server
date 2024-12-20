@@ -1,0 +1,13 @@
+# ignore node_modules
+/node_modules/
+
+# ignore env files
+.env
+
+# ignore sensitive files
+*.pem
+*.key
+*.crt
+
+# ignore logs
+*.log

@@ -1,35 +1,31 @@
 // IMPORTS
-const express = require("express");
-const mongoose = require("mongoose");
-const morgan = require("morgan");
-process.loadEnvFile();
+const express = require("express"); // Web Framework
+const mongoose = require("mongoose"); // Object-Document Mapper for MongoDB
+const morgan = require("morgan"); // Logger
+process.loadEnvFile(); // Load .env file into process.env
 
 // APP CONFIG
-const app = express();
-const PORT = process.env.PORT || 5000;
+const app = express(); // Create express app
+const PORT = process.env.PORT || 3000; // connect por to env or 3000
 
-app.set("port", PORT);
+app.set("port", PORT); // Set app port
 
 // SERVE TEST
-app.get("/", (req, res) => res.send("Hello World!"));
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+app.get("/", (req, res) => res.send("Hello World!")); // Serve test
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`)); // Listen on port
 
 // MIDDLEWARES
-app.use(
-  morgan(
-    ":method :url :status :res[content-lenght] - :response-time ms :date[web]"
-  )
-);
-app.use(express.json());
+// app.use(morgan(":method :url :status :res[content-lenght] - :response-time ms :date[web]"));
+app.use(morgan("dev")); // Log requests to the console
+app.use(express.json()); // Parse JSON bodies
 
 // ROUTES
 
+
 // DATABASE CONNECTION
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("Connected to DB!");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to DB", err);
-  });
+mongoose // Connect to MongoDB
+  .connect(process.env.MONGODB_URI) // .env var MONGODB_URI
+  .then(() => {console.log("Connected to Data Base");}) // Log success
+  .catch((err) => {console.error("Unable to connect to Data Base", err);}); // Log error
+
+  
