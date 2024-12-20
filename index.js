@@ -14,12 +14,12 @@ const PORT = 3000; // connect por to env or 3000
 app.set("port", PORT); // Set app port
 
 // SERVE TEST
-app.get("/", (req, res) => res.send("Hello World!")); // Serve test
+app.get("/", (req, res) => res.send("Hello from index.js!")); // Serve test
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`)); // Listen on port
 
 // MIDDLEWARES
-// app.use(morgan(":method :url :status :res[content-lenght] - :response-time ms :date[web]"));
-app.use(morgan("dev")); // Log requests to the console
+app.use(morgan(":method :url :status :res[content-lenght] - :response-time ms :date[web]"));
+// app.use(morgan("dev")); // Log requests to the console
 app.use(express.json()); // Parse JSON bodies
 
 // ROUTES
